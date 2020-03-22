@@ -1,4 +1,4 @@
-package main.java.com.revature.medicine_time.models;
+package com.revature.medicine_time.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

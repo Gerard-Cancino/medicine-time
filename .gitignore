@@ -4,6 +4,9 @@ target/
 !**/src/main/**
 !**/src/test/**
 
+### Addons
+.metadeta
+
 ### STS ###
 .apt_generated
 .classpath
