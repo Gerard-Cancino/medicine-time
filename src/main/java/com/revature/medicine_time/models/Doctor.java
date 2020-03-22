@@ -9,4 +9,12 @@ import javax.persistence.OneToMany;
 public class Doctor extends User{
 	@OneToMany(mappedBy="doctor")
 	private List<Patient> patientList;
+
+	public List<Patient> getPatientList() {
+		return patientList;
+	}
+
+	public void setPatientList(List<Patient> patientList) {
+		this.patientList = patientList;
+	}
 }
