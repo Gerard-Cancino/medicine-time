@@ -1,8 +1,11 @@
 package com.revature.medicine_time.services.Doctor;
 
+import org.springframework.stereotype.Service;
+
 import com.revature.medicine_time.daos.DoctorDao;
 import com.revature.medicine_time.models.Doctor;
 
+@Service
 public class DoctorServiceImpl implements DoctorService{
 	private DoctorDao dd;
 	
