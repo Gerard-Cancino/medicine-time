@@ -27,10 +27,18 @@ public class Medication {
 	protected long medicationId;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id",nullable=false)
-	private User userId;
+	@JoinColumn(name="patient_id",nullable=false)
+	private Patient patientId;
 	
 	
+	public Patient getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(Patient patientId) {
+		this.patientId = patientId;
+	}
+
 	@OneToMany
 	@JoinColumn(name="medicine_id",nullable=false)
 	private AllMedicine medicineId;
@@ -57,13 +65,7 @@ public class Medication {
 		this.medicationId = medicationId;
 	}
 
-	public User getUserId() {
-		return userId;
-	}
-
-	public void setUserId(User userId) {
-		this.userId = userId;
-	}
+	
 
 	public AllMedicine getMedicineId() {
 		return medicineId;
