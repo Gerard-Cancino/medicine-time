@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.revature.medicine_time.models.User;
 
 @Repository
-public interface UserDao extends JpaRepository<User, Long>{}
+public interface UserDao extends JpaRepository<User, Long>{
+	public User findByUsernameAndPassword(String username, String password);
+}
