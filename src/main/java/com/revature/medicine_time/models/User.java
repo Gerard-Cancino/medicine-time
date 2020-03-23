@@ -1,16 +1,20 @@
 package com.revature.medicine_time.models;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name="user")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity(name="User")
+@Table(name="medicine_user")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

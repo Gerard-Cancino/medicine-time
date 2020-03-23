@@ -9,12 +9,6 @@ import com.revature.medicine_time.models.User;
 public class UserServiceImpl implements UserService{
 
 	private UserDao ud;
-	
-	@Override
-	public User login(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public User updateUser(User u) {
@@ -38,6 +32,11 @@ public class UserServiceImpl implements UserService{
 			oU.setPhoneNumber(u.getPhoneNumber());
 		}
 		return oU;
+	}
+	
+	@Override
+	public User login(String username, String password) {
+		return ud.findByUsernameAndPassword(username,password);
 	}
 
 }

@@ -1,12 +1,16 @@
 package com.revature.medicine_time.models;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name="patient")
+@Entity(name="Patient")
+@Table(name="patient")
 public class Patient extends User{
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="doctor_id",nullable=false)
 	private Doctor doctor;
 
