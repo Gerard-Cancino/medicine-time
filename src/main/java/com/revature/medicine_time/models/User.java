@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 public abstract class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
+	@Column
 	protected long id;
 	@Column(name="first_name")
 	private String firstName;
@@ -27,7 +27,7 @@ public abstract class User {
 	@Column(name="date_of_birth")
 	private int dateOfBirth;
 	@Column(name="phone_number")
-	private int phoneNumber;
+	private long phoneNumber;
 	@Column(name="email")
 	private String email;
 	@NotNull
@@ -63,10 +63,10 @@ public abstract class User {
 	public void setDateOfBirth(int dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getEmail() {
