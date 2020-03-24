@@ -11,7 +11,7 @@ public class AllMedicineServiceImpl implements AllMedicineService{
 	private AllMedicineDao am;
     
     @Override
-	public AllMedicine viewAllMedicine() {
+	public List<AllMedicine> viewAllMedicine() {
 		return am.findAll();
 	}
 
