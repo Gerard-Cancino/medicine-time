@@ -35,7 +35,7 @@ public class AllMedicineServiceImpl implements AllMedicineService{
 			newAm.setName(am.getName());
 		}
 		if(am.getDescription()!="") {
-			newAm.setEmail(am.getEmail());
+			newAm.setDescription(am.getDescription());
 		}
 		return newAm;
 	}
