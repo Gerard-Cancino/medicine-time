@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: movies-api
+    name: medicine-api
   datasource:
     driver-class-name: org.postgresql.Driver
     initialization-mode: never
