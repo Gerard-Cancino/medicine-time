@@ -9,7 +9,12 @@ import com.medicine_time.models.AllMedicine;
 public class AllMedicineServiceImpl implements AllMedicineService{
 
 	private AllMedicineDao am;
-    
+	
+	@Autowired
+	public DoctorServiceImpl(DoctorDao am) {
+		this.am = am;
+	}
+
     @Override
 	public List<AllMedicine> viewAllMedicine() {
 		return am.findAll();
