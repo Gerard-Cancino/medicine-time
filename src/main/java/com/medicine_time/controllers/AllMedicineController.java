@@ -27,8 +27,8 @@ public class AllMedicineController {
 
 	@GetMapping("/Medicine/View")
 	@SuppressWarnings("rawtypes")
-	public ResponseEntity viewAllMedicine(){
-		return new ResponseEntity<AllMedicine>(am.viewAllMedicine(),HttpStatus.OK);
+	public ResponseEntity viewAllMedicines(){
+		return new ResponseEntity<AllMedicine>(am.viewAllMedicines(),HttpStatus.OK);
 	}
 
 
@@ -46,6 +46,6 @@ public class AllMedicineController {
 		if(am.getId()!=0) {
 			return new ResponseEntity<>("Medicine must be an input of 0", HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<AllMedicine>(us.addToAllMedicine(AllMedicine),HttpStatus.OK);
+		return new ResponseEntity<AllMedicine>(am.updateAllMedicine(AllMedicine),HttpStatus.OK);
 	}
 }
