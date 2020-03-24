@@ -45,8 +45,8 @@ public class DosageServiceImpl implements DosageService{
 	if (d.getDate() !=null) {
 		oldDosage.setDate(d.getDate());
 	}
-	if (d.getMedecationId()!=0) {
-		oldDosage.setMedecationId(d.getMedecationId());
+	if (d.getMedication()!=null) {
+		oldDosage.setMedication(d.getMedication());
 	}
 	if (d.getStatusId()!=0) {
 		oldDosage.setStatusId(d.getStatusId());
