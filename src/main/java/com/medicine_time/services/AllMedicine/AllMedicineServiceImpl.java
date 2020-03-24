@@ -11,27 +11,27 @@ import java.util.List;
 @Service
 public class AllMedicineServiceImpl implements AllMedicineService{
 
-	private AllMedicineDao am;
+	private AllMedicineDao ad;
 	
 	@Autowired
 	public AllMedicineServiceImpl(AllMedicineDao am) {
-		this.am = am;
+		this.ad = ad;
 	}
 
     @Override
 	public List<AllMedicine> viewAllMedicine() {
-		return am.viewAllMedicine();
+		return ad.viewAllMedicine();
 	}
 
 	@Override
 	public AllMedicine getOneMedicine(long id) {
-		return am.getOneMedicine(id);
+		return ad.getOneMedicine(id);
 	}
 
 	@Override
 	@Transactional
 	public AllMedicine updateAllMedicine(AllMedicine am) {
-		AllMedicine newAm = am.getOneMedicine(this.am.getId());
+		AllMedicine newAm = ad.getOneMedicine(am.getId());
 		if(am.getName()!="") {
 			newAm.setName(am.getName());
 		}
