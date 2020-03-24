@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.medicine_time.models.AllMedicine;
-import com.revature.medicine_time.services.AllMedicine.AllMedicineService;
+import com.medicine_time.models.AllMedicine;
+import com.medicine_time.services.AllMedicine.AllMedicineService;
 
 @RestController
 @RequestMapping("user")
