@@ -19,12 +19,12 @@ public class AllMedicineServiceImpl implements AllMedicineService{
 	}
 
     @Override
-	public List<AllMedicine> findAll() {
+	public List<AllMedicine> viewAllMedicines() {
 		return ad.findAll();
 	}
 
 	@Override
-	public AllMedicine getOne(long id) {
+	public AllMedicine getOneMedicine(long id) {
 		return ad.getOne(id);
 	}
 
