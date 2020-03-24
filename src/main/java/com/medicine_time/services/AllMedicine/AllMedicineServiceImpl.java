@@ -19,19 +19,19 @@ public class AllMedicineServiceImpl implements AllMedicineService{
 	}
 
     @Override
-	public List<AllMedicine> viewAllMedicine() {
-		return ad.viewAllMedicine();
+	public List<AllMedicine> findAll() {
+		return ad.findAll();
 	}
 
 	@Override
-	public AllMedicine getOneMedicine(long id) {
-		return ad.getOneMedicine(id);
+	public AllMedicine getOne(long id) {
+		return ad.getOne(id);
 	}
 
 	@Override
 	@Transactional
 	public AllMedicine updateAllMedicine(AllMedicine am) {
-		AllMedicine newAm = ad.getOneMedicine(am.getId());
+		AllMedicine newAm = ad.getOne(am.getId());
 		if(am.getName()!="") {
 			newAm.setName(am.getName());
 		}
