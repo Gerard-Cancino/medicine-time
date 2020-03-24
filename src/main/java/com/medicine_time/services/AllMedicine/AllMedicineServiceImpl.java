@@ -11,7 +11,7 @@ public class AllMedicineServiceImpl implements AllMedicineService{
 	private AllMedicineDao am;
 	
 	@Autowired
-	public DoctorServiceImpl(DoctorDao am) {
+	public AllMedicineImpl(AllMedicine am) {
 		this.am = am;
 	}
 
