@@ -21,6 +21,8 @@ public class AllMedicine {
 	@Column(name="description")
 	private String description;
 
+	public AllMedicine(){}
+
 	public long getId() {
 		return this.id;
 	}
