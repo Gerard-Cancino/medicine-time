@@ -46,6 +46,6 @@ public class AllMedicineController {
 		if(am.getId()!=0) {
 			return new ResponseEntity<>("Medicine must be an input of 0", HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<AllMedicine>(am.updateAllMedicine(AllMedicine),HttpStatus.OK);
+		return new ResponseEntity<AllMedicine>(am.updateAllMedicine(am),HttpStatus.OK);
 	}
 }
