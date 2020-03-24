@@ -1,4 +1,4 @@
-package main.java.com.medicine_time.services.AllMedicine;
+package com.medicine_time.services.AllMedicine;
 
 import org.springframework.stereotype.Service;
 
