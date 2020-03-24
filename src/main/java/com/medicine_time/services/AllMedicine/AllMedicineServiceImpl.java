@@ -13,7 +13,7 @@ public class AllMedicineServiceImpl implements AllMedicineService{
 	private AllMedicineDao am;
 	
 	@Autowired
-	public AllMedicineServiceImpl(AllMedicine am) {
+	public AllMedicineServiceImpl(AllMedicineDao am) {
 		this.am = am;
 	}
 
