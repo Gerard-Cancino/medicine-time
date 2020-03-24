@@ -1,11 +1,14 @@
 package com.medicine_time.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -30,10 +33,10 @@ public class Dosage {
 	@JsonFormat(pattern="HH:mm")
 	 private  Date time;
 	
-	@Column(name="medecation_id")
-	@NotNull 
-	//@JoinColumn(name="medication_id")
-	private int medecationId;
+	
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="medicationId")
+	private Medication medication;
 	
 	@Column(name="status_id")
 	@NotNull
@@ -41,6 +44,11 @@ public class Dosage {
 	
 	@Column(name="status_type")
 	private String statusType;
+
+	public Dosage() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getDosageId() {
 		return dosageId;
@@ -66,12 +74,12 @@ public class Dosage {
 		this.time = time;
 	}
 
-	public int getMedecationId() {
-		return medecationId;
+	public Medication getMedication() {
+		return medication;
 	}
 
-	public void setMedecationId(int medecationId) {
-		this.medecationId = medecationId;
+	public void setMedication(Medication medication) {
+		this.medication = medication;
 	}
 
 	public int getStatusId() {
@@ -90,13 +98,24 @@ public class Dosage {
 		this.statusType = statusType;
 	}
 
+	public Dosage(int dosageId, @NotNull Date date, @NotNull Date time, Medication medication, @NotNull int statusId,
+			String statusType) {
+		super();
+		this.dosageId = dosageId;
+		this.date = date;
+		this.time = time;
+		this.medication = medication;
+		this.statusId = statusId;
+		this.statusType = statusType;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + dosageId;
-		result = prime * result + medecationId;
+		result = prime * result + ((medication == null) ? 0 : medication.hashCode());
 		result = prime * result + statusId;
 		result = prime * result + ((statusType == null) ? 0 : statusType.hashCode());
 		result = prime * result + ((time == null) ? 0 : time.hashCode());
@@ -119,7 +138,10 @@ public class Dosage {
 			return false;
 		if (dosageId != other.dosageId)
 			return false;
-		if (medecationId != other.medecationId)
+		if (medication == null) {
+			if (other.medication != null)
+				return false;
+		} else if (!medication.equals(other.medication))
 			return false;
 		if (statusId != other.statusId)
 			return false;
@@ -136,27 +158,11 @@ public class Dosage {
 		return true;
 	}
 
-	public Dosage(int dosageId, @NotNull Date date, @NotNull Date time, @NotNull int medecationId,
-			@NotNull int statusId, String statusType) {
-		super();
-		this.dosageId = dosageId;
-		this.date = date;
-		this.time = time;
-		this.medecationId = medecationId;
-		this.statusId = statusId;
-		this.statusType = statusType;
-	}
-
-	public Dosage() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public String toString() {
-		return "Dosage [dosageId=" + dosageId + ", date=" + date + ", time=" + time + ", medecationId=" + medecationId
+		return "Dosage [dosageId=" + dosageId + ", date=" + date + ", time=" + time + ", medication=" + medication
 				+ ", statusId=" + statusId + ", statusType=" + statusType + "]";
 	}
-	
 
+	
 }
