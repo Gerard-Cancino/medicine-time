@@ -1,7 +1,8 @@
 package com.medicine_time.services.AllMedicine;
 
 import org.springframework.stereotype.Service;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Transactional;
 import com.medicine_time.daos.AllMedicineDao;
 import com.medicine_time.models.AllMedicine;
 
