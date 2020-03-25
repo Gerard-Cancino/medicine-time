@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 import com.medicine_time.models.AllMedicine;
 import com.medicine_time.services.AllMedicine.AllMedicineService;
@@ -32,7 +33,6 @@ public class AllMedicineController {
 	}
 
 
-	//i dont think this has a link??
 	@PostMapping("/Medicine/View/:ID")
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity getOneMedicine(long id) {
@@ -40,7 +40,7 @@ public class AllMedicineController {
 	}
 	
 	
-	@PatchMapping
+	@PatchMapping("/Medicine/Add")
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity addToAllMedicine(AllMedicine am) {
 		if(am.getId()!=0) {
