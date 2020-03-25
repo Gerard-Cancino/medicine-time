@@ -15,7 +15,7 @@ import com.medicine_time.models.AllMedicine;
 import com.medicine_time.services.AllMedicine.AllMedicineService;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("Medicine")
 @CrossOrigin
 public class AllMedicineController {
 	
@@ -26,21 +26,21 @@ public class AllMedicineController {
 		this.am = am;
 	}
 
-	@GetMapping("/Medicine/View")
+	@GetMapping
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity viewAllMedicines(){
 		return new ResponseEntity<List<AllMedicine>>(am.viewAllMedicines(),HttpStatus.OK);
 	}
 
 
-	@PostMapping("/Medicine/View/:ID")
+	@PostMapping("{id}")
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity getOneMedicine(long id) {
 		return new ResponseEntity<AllMedicine>(am.getOneMedicine(id),HttpStatus.OK);
 	}
 	
 	
-	@PatchMapping("/Medicine/Add")
+	@PatchMapping
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity addToAllMedicine(AllMedicine am) {
 		if(am.getId()!=0) {
