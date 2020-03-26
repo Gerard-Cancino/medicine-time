@@ -21,7 +21,7 @@ import com.medicine_time.services.Patient.PatientService;
 import com.medicine_time.services.User.UserService;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("users")
 @CrossOrigin
 public class UserController {
 	

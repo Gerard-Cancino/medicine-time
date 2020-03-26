@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import com.medicine_time.daos.DoctorDao;
 import com.medicine_time.models.Doctor;
 
+import java.util.List;
+
 @Service
 public class DoctorServiceImpl implements DoctorService{
 	private DoctorDao dd;
@@ -22,6 +24,10 @@ public class DoctorServiceImpl implements DoctorService{
 	public boolean saveDoctorToPatient(long patientId, long doctorId) {
 		// TODO
 		return false;
+	}
+    @Override
+	public List<Doctor> getDoctorList(){
+		return dd.findAll();
 	}
 	
 }
