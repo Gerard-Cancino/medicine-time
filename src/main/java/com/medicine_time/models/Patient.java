@@ -18,7 +18,7 @@ public class Patient extends User{
 	@JoinColumn(name="doctor_id",nullable=true)
 	private Doctor doctor;
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="id",nullable=true)
+	@JoinColumn(name="patient_id",nullable=true)
 	private List<Medication> medicationList;
 
 	public List<Medication> getMedication() {

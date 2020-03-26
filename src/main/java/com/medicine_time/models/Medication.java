@@ -4,6 +4,7 @@ package com.medicine_time.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,9 +28,9 @@ public class Medication {
 	@Column
 	protected long medicationId;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="patient_id",nullable=false)
-	private Patient patientId;
+//	@ManyToOne(fetch=FetchType.LAZY)
+//	@JoinColumn(name="patient_id",nullable=false)
+//	private Patient patientId;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="medicine_id",nullable=false)
@@ -56,13 +57,13 @@ public class Medication {
 		this.medicationId = medicationId;
 	}
 
-	public Patient getPatientId() {
-		return patientId;
-	}
-
-	public void setPatientId(Patient patientId) {
-		this.patientId = patientId;
-	}
+//	public Patient getPatientId() {
+//		return patientId;
+//	}
+//
+//	public void setPatientId(Patient patientId) {
+//		this.patientId = patientId;
+//	}
 
 	public AllMedicine getMedicineId() {
 		return medicineId;
