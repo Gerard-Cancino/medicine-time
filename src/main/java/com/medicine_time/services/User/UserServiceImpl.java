@@ -12,6 +12,8 @@ import com.medicine_time.dtos.UserLogin;
 import com.medicine_time.models.Admin;
 import com.medicine_time.models.User;
 
+import java.util.Date;
+
 @Service
 public class UserServiceImpl implements UserService<User>{
 	
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService<User>{
 	@Override
 	public User updateUser(User u) {
 		User oU = ud.getOne(u.getId());
-		if(u.getDateOfBirth()!=0) {
+		if(u.getDateOfBirth()!= new Date(0)) {
 			oU.setDateOfBirth(u.getDateOfBirth());
 		}
 		if(u.getEmail()!="") {

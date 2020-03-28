@@ -1,7 +1,9 @@
-//still need to import send grid
+package com.twilio;//still need to import send grid
 //https://app.sendgrid.com/guide/integrate/langs/java
 
 import com.sendgrid.*;
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.*;
 import java.io.IOException;
 
 public class Example {
