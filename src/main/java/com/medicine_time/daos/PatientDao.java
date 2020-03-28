@@ -7,5 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.medicine_time.models.Patient;
 
+import java.util.List;
+
 @Transactional
-public interface PatientDao extends UserBaseDao<Patient>{}
+public interface PatientDao extends UserBaseDao<Patient>{
+    public List<Patient> findAllByDoctorId(long doctorId);
+}

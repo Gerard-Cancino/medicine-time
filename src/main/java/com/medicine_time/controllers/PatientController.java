@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.medicine_time.models.Patient;
 import com.medicine_time.services.Patient.PatientService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("patients")
 @CrossOrigin
@@ -34,7 +36,18 @@ public class PatientController {
 		}
 		return new ResponseEntity<Patient>(ps.getPatientById(id),HttpStatus.OK);
 	}
-	
+	@GetMapping("doctors/{doctorId}")
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity getPatientListByDoctorId(@PathVariable long doctorId) {
+		if(doctorId==0){
+			return new ResponseEntity<>("ID must not be 0",HttpStatus.BAD_REQUEST);
+		}
+		List<Patient> patientList = ps.getPatientListByDoctorId(doctorId);
+		System.out.println(patientList);
+		return new ResponseEntity<List<Patient>>(ps.getPatientListByDoctorId(doctorId),HttpStatus.OK);
+	}
+
+
 	@PatchMapping("{id}")
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity saveDoctorToPatient(@PathVariable long id, @RequestBody long doctorId){

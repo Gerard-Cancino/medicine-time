@@ -1,5 +1,7 @@
 package com.medicine_time.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -25,6 +27,7 @@ public class User {
 	@Column(name="last_name")
 	private String lastName;
 	@Column(name="date_of_birth")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private int dateOfBirth;
 	@Column(name="phone_number")
 	private long phoneNumber;
