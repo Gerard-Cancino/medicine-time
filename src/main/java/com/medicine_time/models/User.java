@@ -13,6 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity(name="User")
 @Table(name="medicine_user")
@@ -27,8 +28,8 @@ public class User {
 	@Column(name="last_name")
 	private String lastName;
 	@Column(name="date_of_birth")
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
-	private int dateOfBirth;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private Date dateOfBirth;
 	@Column(name="phone_number")
 	private long phoneNumber;
 	@Column(name="email")
