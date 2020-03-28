@@ -1,5 +1,7 @@
 package com.medicine_time.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,8 +18,10 @@ import javax.persistence.Table;
 public class Patient extends User{
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="doctor_id",nullable=true)
+	@JsonIgnore
 	private Doctor doctor;
 	@OneToMany(cascade=CascadeType.ALL)
+	@JsonIgnore
 	@JoinColumn(name="patient_id",nullable=true)
 	private List<Medication> medicationList;
 

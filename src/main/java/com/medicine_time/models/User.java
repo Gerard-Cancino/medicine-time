@@ -1,5 +1,7 @@
 package com.medicine_time.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -11,6 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity(name="User")
 @Table(name="medicine_user")
@@ -25,7 +28,8 @@ public class User {
 	@Column(name="last_name")
 	private String lastName;
 	@Column(name="date_of_birth")
-	private int dateOfBirth;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private Date dateOfBirth;
 	@Column(name="phone_number")
 	private long phoneNumber;
 	@Column(name="email")
@@ -57,10 +61,10 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public int getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(int dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public long getPhoneNumber() {

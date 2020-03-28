@@ -29,8 +29,8 @@ public class DosageServiceImpl implements DosageService{
 		return dd.save(d);
 	}
 	@Override
-	public Dosage getDosageById(int id) {
-		return dd.getOne(id);
+	public Dosage getDosageById(int dosageId) {
+		return dd.getOne(dosageId);
 	}
 	
 	@Override
@@ -45,9 +45,7 @@ public class DosageServiceImpl implements DosageService{
 	if (d.getDate() !=null) {
 		oldDosage.setDate(d.getDate());
 	}
-	if (d.getMedication()!=null) {
-		oldDosage.setMedication(d.getMedication());
-	}
+
 	if (d.getStatusId()!=0) {
 		oldDosage.setStatusId(d.getStatusId());
 	}

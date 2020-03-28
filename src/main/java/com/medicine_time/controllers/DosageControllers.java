@@ -20,9 +20,9 @@ import com.medicine_time.services.Dosage.DosageService;
 
 
 
-@RestController // this is the same as @Controller and @responsebody above every method
-@RequestMapping("/dosage")//base path for the class, 
-@CrossOrigin//for doing cors on a per controller basis
+@RestController 
+@RequestMapping("/dosage")
+@CrossOrigin
 public class DosageControllers {
 	@Autowired
 private DosageService dg;
@@ -31,22 +31,24 @@ private DosageService dg;
 		this.dg = dg;
 	}
 
-	@GetMapping//this is going to match GET on path /dosage
-	//This methods purpose, is take a request and build a response from that request
+	@GetMapping
+	@SuppressWarnings("rawtypes")
 	public ResponseEntity<List<Dosage>> getAllDosage(){
 		
 		return new ResponseEntity(dg.getAllDosage(), HttpStatus.OK);
 	}
 	
-	@PostMapping// this matches post key word
-	public ResponseEntity<Dosage> saveNewDosage(@RequestBody Dosage d){// will try and turn the body into the object type on its right
-		if(d.getDosageId() != 0) {
+	@PostMapping
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity<Dosage> saveNewDosage(@RequestBody Dosage d){
+			if(d.getDosageId() != 0) {
 			return new ResponseEntity("DosageId must be 0", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Dosage>(dg.saveNewDosage(d), HttpStatus.CREATED);
 	}
 	
-	@GetMapping("{id}")// how to do pathvariables in spring
+	@GetMapping("{id}")
+	@SuppressWarnings("rawtypes")
 	public ResponseEntity<Dosage> getDosageById(@PathVariable int id){
 		if(id == 0) {
 			return new ResponseEntity("Id must not be 0", HttpStatus.BAD_REQUEST);
@@ -56,9 +58,9 @@ private DosageService dg;
 
 	
 	@PatchMapping
-	public ResponseEntity<Dosage> updateUser(@RequestBody Dosage d){// will try and turn the body into the object type on its right
+	public ResponseEntity<Dosage> updateDosage(@RequestBody Dosage d){// will try and turn the body into the object type on its right
 		if(d.getDosageId() == 0) {
-			return new ResponseEntity("userId must not be 0", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity("Dosage Id must not be 0", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<Dosage>(dg.updateDosage(d), HttpStatus.CREATED);
 	}

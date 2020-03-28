@@ -9,6 +9,7 @@ import com.medicine_time.models.Doctor;
 import com.medicine_time.models.Patient;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,6 +37,11 @@ public class PatientServiceImpl implements PatientService{
 		pd.save(oldPatient);
 		System.out.println(oldPatient);
 		return oldPatient;
+	}
+
+	@Override
+	public List<Patient> getPatientListByDoctorId(long doctorId){
+		return pd.findAllByDoctorId(doctorId);
 	}
 	
 	@Override
