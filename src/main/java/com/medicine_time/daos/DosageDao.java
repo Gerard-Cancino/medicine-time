@@ -8,4 +8,5 @@ import com.medicine_time.models.Dosage;
 @Repository
 public interface DosageDao extends JpaRepository<Dosage,Integer>{
 	
+	
 }

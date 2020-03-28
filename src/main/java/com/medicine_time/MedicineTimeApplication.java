@@ -11,6 +11,7 @@ public class MedicineTimeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MedicineTimeApplication.class, args);
+		
 	}
 
 }
