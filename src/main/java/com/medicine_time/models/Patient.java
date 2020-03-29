@@ -1,6 +1,7 @@
 package com.medicine_time.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
@@ -13,10 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name="Patient")
 @Table(name="patient")
 public class Patient extends User{
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="doctor_id",nullable=true)
 	@JsonIgnore
 	private Doctor doctor;

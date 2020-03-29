@@ -22,7 +22,7 @@ public class AdminController {
 		this.as = as;
 	}
 	
-	@GetMapping("/:id")
+	@GetMapping("{id}")
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity getAdminById(@PathVariable long id){
 		if(id==0) {
