@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.medicine_time.models.AllMedicine;
 import com.medicine_time.services.AllMedicine.AllMedicineService;
 
@@ -36,8 +38,7 @@ public class AllMedicineController {
 
 
 	@GetMapping("{id}")
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
-	public ResponseEntity getOneMedicine(@PathVariable long id) {
+	public ResponseEntity getOneMedicine(@PathVariable int id) {
 		if(id <= 0) {
 			return new ResponseEntity("Id must not be < 0", HttpStatus.BAD_REQUEST);
 		}
