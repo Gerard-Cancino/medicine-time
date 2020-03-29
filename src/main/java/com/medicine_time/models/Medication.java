@@ -2,6 +2,7 @@ package com.medicine_time.models;
 
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -17,8 +18,10 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name="medication")
-public class Medication {
+public class Medication implements Serializable{
 	/*List of things needed user_id, medicine_id, doctor_note, start_date, end_date,
 	 * medication_id  */
 	
