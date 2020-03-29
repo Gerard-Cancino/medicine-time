@@ -1,6 +1,7 @@
 package com.medicine_time.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -15,6 +16,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name="User")
 @Table(name="medicine_user")
 @Inheritance(strategy = InheritanceType.JOINED)
