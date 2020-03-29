@@ -48,7 +48,10 @@ public class AllMedicineController {
 	@PostMapping()
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity addMedicine(@RequestBody AllMedicine addAm) {
-		return new ResponseEntity<AllMedicine>(am.updateAllMedicine(addAm),HttpStatus.OK);
+		if(addAm.getId()!=0) {
+			return new ResponseEntity<>("Medicine must be an input of 0", HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<AllMedicine>(am.addMedicine(addAm),HttpStatus.OK);
 	}
 	
 	

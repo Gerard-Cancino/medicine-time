@@ -8,4 +8,5 @@ public interface AllMedicineService {
     public List<AllMedicine> viewAllMedicines();
     public AllMedicine getOneMedicine(int id);
     public AllMedicine updateAllMedicine(AllMedicine am);
+    public AllMedicine addMedicine(AllMedicine am)
 }

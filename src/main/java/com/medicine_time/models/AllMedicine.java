@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AllMedicine {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column
+	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int id;
 
     @NotNull

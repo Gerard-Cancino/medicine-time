@@ -28,6 +28,11 @@ public class AllMedicineServiceImpl implements AllMedicineService {
 	}
 
 	@Override
+	public AllMedicine addMedicine(AllMedicine addAm){
+		return ad.save(addAm);
+	}
+
+	@Override
 	public AllMedicine getOneMedicine(int id) {
 		return ad.getOne(id);
 	}
