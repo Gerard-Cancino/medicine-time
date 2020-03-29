@@ -1,20 +1,26 @@
 package com.twilio;//still need to import send grid
+
 //https://app.sendgrid.com/guide/integrate/langs/java
 
 import com.sendgrid.*;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.*;
+
 import java.io.IOException;
 
-public class Example {
-  public static void main(String[] args) throws IOException {
-    Email from = new Email("test@example.com");
-    String subject = "Sending with SendGrid is Fun";
-    Email to = new Email("test@example.com");
-    Content content = new Content("text/plain", "and easy to do anywhere, even with Java");
+public class EmailSender {
+
+  private static final SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
+  private static final String emailFrom = "test@example.com";
+
+  public static void sendMail(String emailTo, String message) throws IOException {
+    Email from = new Email(emailFrom);
+    String subject = "Reminder to take your medicine";
+    Email to = new Email(emailTo);
+    Content content = new Content("text/plain", message);
     Mail mail = new Mail(from, subject, to, content);
 
-    SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
+
     Request request = new Request();
     try {
       request.setMethod(Method.POST);

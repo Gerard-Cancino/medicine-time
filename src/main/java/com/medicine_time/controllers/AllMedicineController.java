@@ -6,7 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,16 +35,25 @@ public class AllMedicineController {
 	}
 
 
-	@PostMapping("{id}")
-	@SuppressWarnings("rawtypes")
-	public ResponseEntity getOneMedicine(long id) {
+	@GetMapping("{id}")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
+	public ResponseEntity getOneMedicine(@PathVariable long id) {
+		if(id <= 0) {
+			return new ResponseEntity("Id must not be < 0", HttpStatus.BAD_REQUEST);
+		}
 		return new ResponseEntity<AllMedicine>(am.getOneMedicine(id),HttpStatus.OK);
+	}
+	
+	@PostMapping()
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity addMedicine(@RequestBody AllMedicine addAm) {
+		return new ResponseEntity<AllMedicine>(am.updateAllMedicine(addAm),HttpStatus.OK);
 	}
 	
 	
 	@PatchMapping
 	@SuppressWarnings("rawtypes")
-	public ResponseEntity addToAllMedicine(AllMedicine am) {
+	public ResponseEntity updateMedicine(@RequestBody AllMedicine am) {
 		if(am.getId()!=0) {
 			return new ResponseEntity<>("Medicine must be an input of 0", HttpStatus.BAD_REQUEST);
 		}
