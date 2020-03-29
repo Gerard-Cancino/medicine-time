@@ -45,10 +45,6 @@ public class DosageServiceImpl implements DosageService{
 	if (d.getDate() !=null) {
 		oldDosage.setDate(d.getDate());
 	}
-
-	if (d.getStatusId()!=0) {
-		oldDosage.setStatusId(d.getStatusId());
-	}
 	return oldDosage;
 	}
 

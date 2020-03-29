@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity(name="Patient")
 @Table(name="patient")
 public class Patient extends User{
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="doctor_id",nullable=true)
 	@JsonIgnore
 	private Doctor doctor;
