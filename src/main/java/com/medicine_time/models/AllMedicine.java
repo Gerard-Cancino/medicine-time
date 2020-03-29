@@ -8,13 +8,18 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+<<<<<<< HEAD
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+=======
+
+>>>>>>> 1e74720fe18f6204ad44d36773f6858f18919761
 @Entity(name="medicine")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AllMedicine {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
-	protected long id;
+	protected int id;
 
     @NotNull
     @Column(name="name")
@@ -25,11 +30,11 @@ public class AllMedicine {
 
 	public AllMedicine(){}
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
