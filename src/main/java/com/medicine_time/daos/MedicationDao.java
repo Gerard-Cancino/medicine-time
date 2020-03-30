@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.medicine_time.models.Medication;
 
 @Repository
-public interface MedicationDao extends MedicationBaseDao<Medication> {
+public interface MedicationDao extends JpaRepository<Medication,Long> {
 	
 	
 	

@@ -2,7 +2,9 @@ package com.medicine_time.models;
 
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,6 +19,9 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name="medication")
 public class Medication {
 	/*List of things needed user_id, medicine_id, doctor_note, start_date, end_date,
@@ -25,8 +30,12 @@ public class Medication {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column
-	protected long medicationId;
+	//@Column
+	protected long id;
+	  @OneToMany
+	   @JoinColumn(name = "medicationId")
+	  @GeneratedValue(strategy=GenerationType.AUTO)
+	  private List<Dosage> medicationId = new ArrayList<Dosage>();
 	
 //	@ManyToOne(fetch=FetchType.LAZY)
 //	@JoinColumn(name="patient_id",nullable=false)
@@ -41,29 +50,34 @@ public class Medication {
 	
 	@Column(name = "start_date")
 	@NotNull
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
+	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private  Date startDate;
 	
 	@Column(name = "end_date")
 	@NotNull
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
+	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private  Date endDate;
 
-	public long getMedicationId() {
+	public Medication() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public List<Dosage> getMedicationId() {
 		return medicationId;
 	}
 
-	public void setMedicationId(long medicationId) {
+	public void setMedicationId(List<Dosage> medicationId) {
 		this.medicationId = medicationId;
 	}
-
-//	public Patient getPatientId() {
-//		return patientId;
-//	}
-//
-//	public void setPatientId(Patient patientId) {
-//		this.patientId = patientId;
-//	}
 
 	public AllMedicine getMedicineId() {
 		return medicineId;
@@ -96,11 +110,23 @@ public class Medication {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
-	
-	
-	
-	
-	
+
+	public Medication(long id, List<Dosage> medicationId, AllMedicine medicineId, String doctorNote,
+			@NotNull Date startDate, @NotNull Date endDate) {
+		super();
+		this.id = id;
+		this.medicationId = medicationId;
+		this.medicineId = medicineId;
+		this.doctorNote = doctorNote;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Medication [id=" + id + ", medicationId=" + medicationId + ", medicineId=" + medicineId
+				+ ", doctorNote=" + doctorNote + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+	}
+
 	
 }
