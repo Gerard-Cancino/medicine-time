@@ -121,7 +121,7 @@ public class Medication implements Serializable{
 		return endDate;
 	}
 
-	public void setEmdDate(Date endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
