@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -42,9 +43,10 @@ public class Medication implements Serializable{
 
 	  private List<Dosage> medicationId = new ArrayList<Dosage>();
 	
-//	@ManyToOne(fetch=FetchType.LAZY)
-//	@JoinColumn(name="patient_id",nullable=false)
-//	private Patient patientId;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@NotNull
+	@JoinColumn(name="patient_id",nullable=false)
+	private Patient patientId;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@NotNull
@@ -58,11 +60,6 @@ public class Medication implements Serializable{
 	@NotNull
 	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private  Date startDate;
-	
-	@Column(name = "end_date")
-	@NotNull
-	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
-	private  Date endDate;
 
 	public Medication() {
 		super();
@@ -76,7 +73,13 @@ public class Medication implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
+	public Patient getPatientId() {
+		return patientId;
+	}
 
+	public void setPatientId(Patient patient) {
+		this.patientId = patient;
+	}
 	public List<Dosage> getMedicationId() {
 		return medicationId;
 	}
@@ -109,30 +112,29 @@ public class Medication implements Serializable{
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	public Medication(long id, List<Dosage> medicationId, AllMedicine medicineId, String doctorNote,
-			@NotNull Date startDate, @NotNull Date endDate) {
+	public Medication(long id, List<Dosage> medicationId, @NotNull AllMedicine medicineId, String doctorNote,
+			@NotNull Date startDate) {
 		super();
 		this.id = id;
 		this.medicationId = medicationId;
 		this.medicineId = medicineId;
 		this.doctorNote = doctorNote;
 		this.startDate = startDate;
-		this.endDate = endDate;
 	}
 
 	@Override
 	public String toString() {
 		return "Medication [id=" + id + ", medicationId=" + medicationId + ", medicineId=" + medicineId
-				+ ", doctorNote=" + doctorNote + ", startDate=" + startDate + ", endDate=" + endDate + "]";
+				+ ", doctorNote=" + doctorNote + ", startDate=" + startDate + "]";
 	}
+	
+	//private int patientId;
+	/*@Column(name = "end_date")
+	@NotNull
+	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
+	private  Date endDate;*/
+
+	
 
 	
 }
