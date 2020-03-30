@@ -61,6 +61,11 @@ public class Medication implements Serializable{
 	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private  Date startDate;
 
+	@Column(name = "end_date")
+	@NotNull
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
+	private  Date endDate;
+
 	public Medication() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -112,6 +117,14 @@ public class Medication implements Serializable{
 		this.startDate = startDate;
 	}
 
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEmdDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 	public Medication(long id, List<Dosage> medicationId, @NotNull AllMedicine medicineId, String doctorNote,
 			@NotNull Date startDate) {
 		super();
@@ -127,12 +140,7 @@ public class Medication implements Serializable{
 		return "Medication [id=" + id + ", medicationId=" + medicationId + ", medicineId=" + medicineId
 				+ ", doctorNote=" + doctorNote + ", startDate=" + startDate + "]";
 	}
-	
-	//private int patientId;
-	/*@Column(name = "end_date")
-	@NotNull
-	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
-	private  Date endDate;*/
+
 
 	
 

@@ -22,7 +22,7 @@ public class DoctorServiceImpl implements DoctorService{
 	
 	@Override
 	public boolean saveDoctorToPatient(long patientId, long doctorId) {
-		// TODO
+		// TO
 		return false;
 	}
     @Override
@@ -31,8 +31,7 @@ public class DoctorServiceImpl implements DoctorService{
 	}
 
 	@Override
-	public Doctor saveDoctor(Doctor doctor){
+	public Doctor saveDoctor(Doctor doctor) {
 		return dd.save(doctor);
 	}
-	
 }
