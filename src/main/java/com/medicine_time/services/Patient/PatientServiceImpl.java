@@ -46,7 +46,7 @@ public class PatientServiceImpl implements PatientService{
 	@Override
 	public List<Patient> getPatientListByDoctorId(long doctorId){
 		if(doctorId==0){
-			pd.findAllByDoctorId(null);
+			return pd.findAllByDoctor(null);
 		}
 		return pd.findAllByDoctorId(doctorId);
 	}

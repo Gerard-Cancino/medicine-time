@@ -30,7 +30,14 @@ public class DosageServiceImpl implements DosageService{
 	}
 	@Override
 	public Dosage getDosageById(int dosageId) {
-		return dd.getOne(dosageId);
+		Dosage dosage = dd.findById(dosageId).orElse(null);
+		if(dosage==null) {
+			System.out.print("This dosage is null");
+		}
+		System.out.println("###############WE ARE IN SERVICE################");
+		System.out.println(dosage);
+		System.out.println("did this run?");
+		return dosage;
 	}
 	
 	@Override
@@ -46,6 +53,7 @@ public class DosageServiceImpl implements DosageService{
 		oldDosage.setDate(d.getDate());
 	}
 	return oldDosage;
+
 	}
 
 }

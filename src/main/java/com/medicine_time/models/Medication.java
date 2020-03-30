@@ -2,9 +2,11 @@ package com.medicine_time.models;
 
 
 
+
+import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.Date;
-
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,8 +19,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
+
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name="medication")
 public class Medication implements Serializable{
@@ -28,12 +31,19 @@ public class Medication implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column
-	protected long medicationId;
+	//@Column
+	protected long id;
+    @OneToMany
+    @JoinColumn(name = "medicationId")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@JsonManagedReference
+	private List<Dosage> medicationId = new ArrayList<Dosage>();
 	
-//	@ManyToOne(fetch=FetchType.LAZY)
-//	@JoinColumn(name="patient_id",nullable=false)
-//	private Patient patientId;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@NotNull
+	@JoinColumn(name="patient_id",nullable=false)
+	@JsonBackReference
+	private Patient patientId;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@NotNull
@@ -45,29 +55,40 @@ public class Medication implements Serializable{
 	
 	@Column(name = "start_date")
 	@NotNull
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
+	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private  Date startDate;
-	
+
 	@Column(name = "end_date")
 	@NotNull
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
+	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private  Date endDate;
 
-	public long getMedicationId() {
+	public Medication() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	public Patient getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(Patient patient) {
+		this.patientId = patient;
+	}
+	public List<Dosage> getMedicationId() {
 		return medicationId;
 	}
 
-	public void setMedicationId(long medicationId) {
+	public void setMedicationId(List<Dosage> medicationId) {
 		this.medicationId = medicationId;
 	}
-
-//	public Patient getPatientId() {
-//		return patientId;
-//	}
-//
-//	public void setPatientId(Patient patientId) {
-//		this.patientId = patientId;
-//	}
 
 	public AllMedicine getMedicineId() {
 		return medicineId;
@@ -100,11 +121,25 @@ public class Medication implements Serializable{
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+
+	public Medication(long id, List<Dosage> medicationId, @NotNull AllMedicine medicineId, String doctorNote,
+			@NotNull Date startDate) {
+		super();
+		this.id = id;
+		this.medicationId = medicationId;
+		this.medicineId = medicineId;
+		this.doctorNote = doctorNote;
+		this.startDate = startDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Medication [id=" + id + ", medicationId=" + medicationId + ", medicineId=" + medicineId
+				+ ", doctorNote=" + doctorNote + ", startDate=" + startDate + "]";
+	}
+
+
 	
-	
-	
-	
-	
-	
+
 	
 }

@@ -31,8 +31,7 @@ public class DoctorServiceImpl implements DoctorService{
 	}
 
 	@Override
-	public Doctor saveDoctor(Doctor doctor){
+	public Doctor saveDoctor(Doctor doctor) {
 		return dd.save(doctor);
 	}
-	
 }

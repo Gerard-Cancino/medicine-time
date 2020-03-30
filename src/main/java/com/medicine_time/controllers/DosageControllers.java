@@ -49,9 +49,13 @@ private DosageService dg;
 	
 	@GetMapping("{id}")
 	@SuppressWarnings("rawtypes")
-	public ResponseEntity<Dosage> getDosageById(@PathVariable int id){
+	public ResponseEntity getDosageById(@PathVariable int id){
 		if(id == 0) {
-			return new ResponseEntity("Id must not be 0", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Id must not be 0", HttpStatus.BAD_REQUEST);
+		}
+		Dosage dosage = dg.getDosageById(id);
+		if(dosage==null) {
+			return new ResponseEntity<>("Could not find dosage",HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Dosage>(dg.getDosageById(id), HttpStatus.OK);
 	}

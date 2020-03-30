@@ -44,7 +44,9 @@ public class MedicationServiceImpl implements MedicationService{
 	@Override
 	public Medication getMedicationById(long id) {
 		// TODO Auto-generated method stub
-		return md.getOne(id);
+		System.out.println("## WE ARE IN MEDICATION SERVICE ##");
+		System.out.println(md.findById(id));
+		return md.findById(id).orElse(null);
 	}
 
 
@@ -52,16 +54,16 @@ public class MedicationServiceImpl implements MedicationService{
 	@Override
 	public Medication updateMedication(Medication m) {
 		// TODO Auto-generated method stub
-		Medication oldMed = md.getOne(m.getMedicationId());
+		Medication oldMed = md.getOne(m.getId());
 		if(m.getDoctorNote() != "") {
 			oldMed.setDoctorNote(m.getDoctorNote());
 		}
 		if(m.getStartDate() != null) {
 			oldMed.setStartDate(m.getStartDate());
-		}
+		}/*
 		if(m.getEndDate() != null) {
 			oldMed.setEndDate(m.getEndDate());
-		}
+		}*/
 		
 		return oldMed;
 		}

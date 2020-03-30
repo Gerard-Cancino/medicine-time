@@ -40,7 +40,7 @@ public class MedicationController {
 	
 	@PostMapping
 	public ResponseEntity<Medication> saveNewMedication(@RequestBody Medication m){
-		if(m.getMedicationId() != 0) {
+		if(m.getId() != 0) {
 			return new ResponseEntity("medicationId must be 0", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity(ms.saveNewMedication(m), HttpStatus.CREATED);
@@ -48,7 +48,7 @@ public class MedicationController {
 	
 	@PatchMapping
 	public ResponseEntity<Medication> updateMovie(@RequestBody Medication m){// will try and turn the body into the object type on its right
-		if(m.getMedicationId() == 0) {
+		if(m.getId() == 0) {
 			return new ResponseEntity("medicationId must not be 0", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity(ms.updateMedication(m), HttpStatus.CREATED);
@@ -56,11 +56,13 @@ public class MedicationController {
 	
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Medication> getMedicationById(@PathVariable int id){// will try and turn the body into the object type on its right
+	public ResponseEntity<Medication> getMedicationById(@PathVariable long id){// will try and turn the body into the object type on its right
 		if(id== 0) {
 			return new ResponseEntity("medicationId must not be 0", HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity(ms.getMedicationById(id), HttpStatus.CREATED);
+		System.out.println("##WE ARE IN CONTROLLER##");
+		System.out.print(ms.getMedicationById(id));
+		return new ResponseEntity(ms.getMedicationById(id), HttpStatus.OK);
 	}
 	
 	
