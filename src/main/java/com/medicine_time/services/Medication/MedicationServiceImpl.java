@@ -60,10 +60,10 @@ public class MedicationServiceImpl implements MedicationService{
 		}
 		if(m.getStartDate() != null) {
 			oldMed.setStartDate(m.getStartDate());
-		}
+		}/*
 		if(m.getEndDate() != null) {
 			oldMed.setEndDate(m.getEndDate());
-		}
+		}*/
 		
 		return oldMed;
 		}
