@@ -28,6 +28,11 @@ public class AllMedicineServiceImpl implements AllMedicineService {
 	}
 
 	@Override
+	public AllMedicine addMedicine(AllMedicine addAm){
+		return ad.save(addAm);
+	}
+
+	@Override
 	public AllMedicine getOneMedicine(int id) {
 		return ad.getOne(id);
 	}
@@ -35,7 +40,7 @@ public class AllMedicineServiceImpl implements AllMedicineService {
 	@Override
 	@Transactional
 	public AllMedicine updateAllMedicine(AllMedicine am) {
-		AllMedicine newAm = ad.getOne(0);
+		AllMedicine newAm = ad.getOne(am.getId());
 		if(am.getName()!="") {
 			newAm.setName(am.getName());
 		}

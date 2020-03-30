@@ -48,15 +48,15 @@ public class AllMedicineController {
 	@PostMapping()
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity addMedicine(@RequestBody AllMedicine addAm) {
-		return new ResponseEntity<AllMedicine>(am.updateAllMedicine(addAm),HttpStatus.OK);
+		return new ResponseEntity<AllMedicine>(am.addMedicine(addAm),HttpStatus.OK);
 	}
 	
 	
 	@PatchMapping
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity updateMedicine(@RequestBody AllMedicine am) {
-		if(am.getId()!=0) {
-			return new ResponseEntity<>("Medicine must be an input of 0", HttpStatus.BAD_REQUEST);
+		if(am.getId()==0) {
+			return new ResponseEntity<>("Medicine must not be an input of 0", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<AllMedicine>(this.am.updateAllMedicine(am),HttpStatus.OK);
 	}
