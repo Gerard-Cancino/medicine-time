@@ -8,5 +8,5 @@ public interface DoctorService {
 	public Doctor getDoctorById(long id);
 	public boolean saveDoctorToPatient(long patientId,long doctorId);
 	public List<Doctor> getDoctorList();
-
+	public Doctor saveDoctor(Doctor doctor);
 }

@@ -52,8 +52,8 @@ public class DosageServiceImpl implements DosageService{
 	if (d.getDate() !=null) {
 		oldDosage.setDate(d.getDate());
 	}
+	return oldDosage;
 
-		return oldDosage;
 	}
 
 }

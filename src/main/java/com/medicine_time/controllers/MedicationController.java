@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.medicine_time.models.AllMedicine;
 import com.medicine_time.models.Medication;
 import com.medicine_time.services.Medication.MedicationService;
 
@@ -29,8 +30,9 @@ public class MedicationController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Medication>> getAllMedication(){
-		return new ResponseEntity(ms.getAllMedication(), HttpStatus.OK);
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity getAllMedication(){
+		return new ResponseEntity<List<Medication>>(ms.getAllMedication(),HttpStatus.OK);
 	}
 	
 

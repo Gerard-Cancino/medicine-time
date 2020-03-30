@@ -6,6 +6,7 @@ import java.util.List;
 public interface AllMedicineService {
     //services
     public List<AllMedicine> viewAllMedicines();
-    public AllMedicine getOneMedicine(long id);
+    public AllMedicine getOneMedicine(int id);
     public AllMedicine updateAllMedicine(AllMedicine am);
+    public AllMedicine addMedicine(AllMedicine am);
 }

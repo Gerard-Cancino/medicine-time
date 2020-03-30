@@ -1,13 +1,10 @@
 package com.medicine_time.controllers;
 
+import com.medicine_time.models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.medicine_time.models.Doctor;
 import com.medicine_time.services.Doctor.DoctorService;
@@ -36,5 +33,11 @@ public class DoctorController {
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity getDoctorList(){
 		return new ResponseEntity<List<Doctor>>(ds.getDoctorList(),HttpStatus.OK);
+	}
+
+	@PostMapping
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity savePatient(@RequestBody Doctor doctor) {
+		return new ResponseEntity<Doctor>(ds.saveDoctor(doctor),HttpStatus.OK);
 	}
 }

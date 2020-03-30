@@ -1,13 +1,10 @@
 package com.medicine_time.controllers;
 
+import com.medicine_time.models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.medicine_time.models.Admin;
 import com.medicine_time.services.Admin.AdminService;
@@ -22,12 +19,22 @@ public class AdminController {
 		this.as = as;
 	}
 	
-	@GetMapping("/:id")
+	@GetMapping("{id}")
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity getAdminById(@PathVariable long id){
 		if(id==0) {
 			return new ResponseEntity<>("Id must not be 0",HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Admin>(as.getAdminById(id),HttpStatus.OK);
+		Admin admin = as.getAdminById(id);
+		if(admin==null) {
+			return new ResponseEntity<>("Could not find user", HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Admin>(admin,HttpStatus.OK);
+	}
+
+	@PostMapping
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity saveAdmin(@RequestBody Admin admin) {
+		return new ResponseEntity<Admin>(as.saveAdmin(admin),HttpStatus.CREATED);
 	}
 }

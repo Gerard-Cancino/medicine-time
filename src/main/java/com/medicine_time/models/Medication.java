@@ -2,10 +2,11 @@ package com.medicine_time.models;
 
 
 
+
 import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,11 +20,13 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name="medication")
-public class Medication {
+public class Medication implements Serializable{
 	/*List of things needed user_id, medicine_id, doctor_note, start_date, end_date,
 	 * medication_id  */
 	
@@ -35,6 +38,8 @@ public class Medication {
 	  @OneToMany
 	   @JoinColumn(name = "medicationId")
 	  @GeneratedValue(strategy=GenerationType.AUTO)
+		//@JsonIgnore
+
 	  private List<Dosage> medicationId = new ArrayList<Dosage>();
 	
 //	@ManyToOne(fetch=FetchType.LAZY)
@@ -42,6 +47,7 @@ public class Medication {
 //	private Patient patientId;
 
 	@ManyToOne(fetch=FetchType.LAZY)
+	@NotNull
 	@JoinColumn(name="medicine_id",nullable=false)
 	private AllMedicine medicineId;
 	
