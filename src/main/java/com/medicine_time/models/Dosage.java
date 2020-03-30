@@ -47,13 +47,11 @@ public class Dosage {
 			)
 	//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	//@JsonIdentityReference(alwaysAsId = true)*/
-	@ManyToOne(fetch=FetchType.LAZY)
+	//@ManyToOne(fetch=FetchType.LAZY)
 	//@JoinColumn(name="medicationId")
 	//@JsonIgnore
 	//@Column (name= "medication_id")
-	@JsonBackReference
-	@NotNull
-	private Medication medicationId;
+	private int medicationId;
 
 
 
@@ -88,19 +86,19 @@ public class Dosage {
 
 
 
-	public Medication getMedicationId() {
+	public int getMedicationId() {
 		return medicationId;
 	}
 
 
 
-	public void setMedicationId(Medication medicationId) {
+	public void setMedicationId(int medicationId) {
 		this.medicationId = medicationId;
 	}
 
 
 
-	public Dosage(int dosageId, @NotNull Date date, Medication medicationId) {
+	public Dosage(int dosageId, @NotNull Date date, int medicationId) {
 		super();
 		this.dosageId = dosageId;
 		this.date = date;
@@ -112,6 +110,18 @@ public class Dosage {
 	@Override
 	public String toString() {
 		return "Dosage [dosageId=" + dosageId + ", date=" + date + ", medicationId=" + medicationId + "]";
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + dosageId;
+		result = prime * result + medicationId;
+		return result;
 	}
 
 
