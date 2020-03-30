@@ -63,7 +63,7 @@ public class Medication implements Serializable{
 
 	@Column(name = "end_date")
 	@NotNull
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
+	//@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	private  Date endDate;
 
 	public Medication() {
