@@ -36,6 +36,7 @@ public class Medication implements Serializable{
 //	private Patient patientId;
 
 	@ManyToOne(fetch=FetchType.LAZY)
+	@NotNull
 	@JoinColumn(name="medicine_id",nullable=false)
 	private AllMedicine medicineId;
 	

@@ -40,7 +40,7 @@ public class AllMedicineServiceImpl implements AllMedicineService {
 	@Override
 	@Transactional
 	public AllMedicine updateAllMedicine(AllMedicine am) {
-		AllMedicine newAm = ad.getOne(0);
+		AllMedicine newAm = ad.getOne(am.getId());
 		if(am.getName()!="") {
 			newAm.setName(am.getName());
 		}
