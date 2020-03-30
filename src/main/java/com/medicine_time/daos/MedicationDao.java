@@ -6,7 +6,4 @@ import com.medicine_time.models.Medication;
 
 @Repository
 public interface MedicationDao extends JpaRepository<Medication, Long> {
-	
-	
-	
 }
