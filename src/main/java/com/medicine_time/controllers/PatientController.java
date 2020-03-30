@@ -40,7 +40,7 @@ public class PatientController {
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity getPatientListByDoctorId(@PathVariable long doctorId) {
 		if(doctorId==0){
-			return new ResponseEntity<>("ID must not be 0",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(ps.getPatientListByDoctorId(0),HttpStatus.BAD_REQUEST);
 		}
 		List<Patient> patientList = ps.getPatientListByDoctorId(doctorId);
 		System.out.println(patientList);

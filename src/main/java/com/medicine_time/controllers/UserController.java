@@ -44,13 +44,13 @@ public class UserController {
 	public ResponseEntity login(@RequestBody Credentials cred) {
 		System.out.println(cred);
 		User u = us.login(cred.getUsername(), cred.getPassword());
-		if(u.getRoleType()=="admin") {
+		if(u.getRoleType()=="Admin") {
 			return new ResponseEntity<Admin>(as.getAdminById(u.getId()),HttpStatus.OK);
 		}
-		else if(u.getRoleType()=="doctor") {
+		else if(u.getRoleType()=="Doctor") {
 			return new ResponseEntity<Doctor>(ds.getDoctorById(u.getId()),HttpStatus.OK);
 		}
-		else if(u.getRoleType()=="patient") {
+		else if(u.getRoleType()=="Patient") {
 			return new ResponseEntity<Patient>(ps.getPatientById(u.getId()),HttpStatus.OK);
 		}
 		return new ResponseEntity<User>(us.login(cred.getUsername(), cred.getPassword()),HttpStatus.OK);

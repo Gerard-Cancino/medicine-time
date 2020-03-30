@@ -11,5 +11,5 @@ import java.util.List;
 
 @Transactional
 public interface PatientDao extends UserBaseDao<Patient>{
-    public List<Patient> findAllByDoctorId(long doctorId);
+    public List<Patient> findAllByDoctorId(Long doctorId);
 }

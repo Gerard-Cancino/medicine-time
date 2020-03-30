@@ -29,5 +29,10 @@ public class DoctorServiceImpl implements DoctorService{
 	public List<Doctor> getDoctorList(){
 		return dd.findAll();
 	}
+
+	@Override
+	public Doctor saveDoctor(Doctor doctor){
+		return dd.save(doctor);
+	}
 	
 }

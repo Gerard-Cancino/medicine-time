@@ -33,14 +33,21 @@ public class PatientServiceImpl implements PatientService{
 		Patient oldPatient = pd.getOne(patientId);
 		System.out.println(oldPatient);
 		Doctor doctor = dd.getOne(doctorId);
-		oldPatient.setDoctor(doctor);
+		if(oldPatient.getDoctor().getId()==doctor.getId()){
+			oldPatient.setDoctor(null);
+		}
+		else{
+			oldPatient.setDoctor(doctor);
+		}
 		pd.save(oldPatient);
-		System.out.println(oldPatient);
 		return oldPatient;
 	}
 
 	@Override
 	public List<Patient> getPatientListByDoctorId(long doctorId){
+		if(doctorId==0){
+			pd.findAllByDoctorId(null);
+		}
 		return pd.findAllByDoctorId(doctorId);
 	}
 	
