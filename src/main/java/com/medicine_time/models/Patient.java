@@ -1,5 +1,6 @@
 package com.medicine_time.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -22,11 +23,11 @@ import javax.persistence.Table;
 @Table(name="patient")
 public class Patient extends User{
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="doctor_id",nullable=true)
-	@JsonIgnore
+	@JsonBackReference
 	private Doctor doctor;
 	
 	@OneToMany(mappedBy="patientId",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JsonManagedReference
 	private List<Medication> medicationList;//=new ArrayList<Medication>();
 
 	public List<Medication> getMedication() {

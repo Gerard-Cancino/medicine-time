@@ -19,10 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -36,16 +33,16 @@ public class Medication implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	//@Column
 	protected long id;
-	  @OneToMany
-	   @JoinColumn(name = "medicationId")
-	  @GeneratedValue(strategy=GenerationType.AUTO)
-		//@JsonIgnore
-
-	  private List<Dosage> medicationId = new ArrayList<Dosage>();
+    @OneToMany
+    @JoinColumn(name = "medicationId")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@JsonManagedReference
+	private List<Dosage> medicationId = new ArrayList<Dosage>();
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@NotNull
 	@JoinColumn(name="patient_id",nullable=false)
+	@JsonBackReference
 	private Patient patientId;
 
 	@ManyToOne(fetch=FetchType.LAZY)
